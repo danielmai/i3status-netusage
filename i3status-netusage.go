@@ -50,11 +50,11 @@ func stats() (rx, tx uint64) {
 // format converts a number of bytes in KiB or MiB.
 func format(counter, prevCounter uint64, window float64) string {
 	if prevCounter == 0 {
-		return "bytes"
+		return "   B"
 	}
 	r := float64(counter-prevCounter) / window
 	if r < 1024 {
-		return fmt.Sprintf("%.0f bytes", r)
+		return fmt.Sprintf("%.0f   B", r)
 	}
 	if r < 1024*1024 {
 		return fmt.Sprintf("%.1f KiB", r/1024)
